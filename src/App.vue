@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ProductList v-bind:products=products />    
-    <ProductForm/>
+    <ProductForm :addProdParent="pushProduct" />
     Total de Produtos: {{totalProducts}}
   </div>
 </template>
@@ -18,14 +18,6 @@ export default {
         {
           produto:'p1',
           descricao:'d1',
-        },
-        {
-          produto:'p2',
-          descricao:'d2',
-        },
-        {
-          produto:'p2',
-          descricao:'d2',
         }
       ]
     }
@@ -33,6 +25,11 @@ export default {
   computed: {
     totalProducts:function(){
       return this.products.length;
+    }
+  },
+  methods:{
+    pushProduct(prod){
+      this.products.push(prod)
     }
   },
   components: {
