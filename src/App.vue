@@ -1,17 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ProductList v-bind:products=products />    
+    <ProductForm/>
+    Total de Produtos: {{totalProducts}}
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ProductList from './components/ProductList.vue'
+import ProductForm from './components/ProductForm.vue'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      products:[
+        {
+          produto:'p1',
+          descricao:'d1',
+        },
+        {
+          produto:'p2',
+          descricao:'d2',
+        },
+        {
+          produto:'p2',
+          descricao:'d2',
+        }
+      ]
+    }
+  },
+  computed: {
+    totalProducts:function(){
+      return this.products.length;
+    }
+  },
   components: {
-    HelloWorld
+    ProductList,
+    ProductForm
   }
 }
 </script>
@@ -26,3 +52,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+
